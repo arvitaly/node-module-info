@@ -1,4 +1,14 @@
 var path = require('path');
 module.exports = (object) => {
-    return path.resolve(object._caller, object._modulePath);
+    var realPath;
+    if (object.isAbsolute()) {
+        realPath = object._modulePath;
+    } else {
+        if (object._caller) {
+
+        } else {
+            realPath = path.join(process.cwd(), object._modulePath);
+        }
+    }
+    return path.resolve(realPath);
 }
