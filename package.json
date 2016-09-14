@@ -1,6 +1,6 @@
 {
   "name": "node-module-info",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Full information about module in NodeJS",
   "main": "index.js",
   "typings": "typings.d.ts",

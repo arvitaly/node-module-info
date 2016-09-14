@@ -7,5 +7,5 @@ module.exports = (object) => {
         return object.getCallerInfo().getPackagePath();
     }
     var packagePath = object.getNearestPackageJSON();
-    return packagePath ? path.dirname(packagePath) : path.dirname(object.getFullPath());
+    return packagePath ? path.dirname(packagePath) : null;
 }
