@@ -45,5 +45,4 @@ var factory = (modulePath, caller) => {
     obj.getFullInfo = save.bind(this, obj, "fullInfo", getFullInfo);
     return obj;
 }
-factory.nodeModuleInfo = factory;
 module.exports = factory;
