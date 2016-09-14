@@ -1,12 +1,6 @@
-module.exports = (object, cb) => {
-    var sc;
-    if (object._saved.some((c) => {
-        return c.func === cb ? sc = c : null;
-    })) {
-        return sc.value;
-    } else {
-        var value = cb(object);
-        object._saved.push({ func: cb, value: value });
-        return value;
+module.exports = (object, key, cb) => {
+    if (!object._saved[key]) {
+        object._saved[key] = cb(object);
     }
+    return object._saved[key];
 }

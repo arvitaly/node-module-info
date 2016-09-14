@@ -1,19 +1,46 @@
 var save = require('./save');
-var getFullPath = require('./get-full-path');
-var getResolvedPath = require('./get-resolved-path');
-var getRootPath = require('./get-root-path');
-var getPackagePath = require('./get-package-path');
-var getRelativePath = require('./get-relative-path');
-var getRelativeName = require('./get-relative-name');
-var isDependence = require('./is-dependence');
-var getPackageInfo = require('./get-package-info');
-var getFullInfo = require('./get-full-info');
-module.exports = (modulePath, caller) => {
+var getFullPath = require('./get-full-path'),
+    getResolvedPath = require('./get-resolved-path'),
+    getRootPath = require('./get-root-path'),
+    getPackagePath = require('./get-package-path'),
+    getRelativePath = require('./get-relative-path'),
+    getRelativeName = require('./get-relative-name'),
+    isDependence = require('./is-dependence'),
+    isAbsolute = require('./is-absolute'),
+    isSystem = require('./is-system'),
+    isRelative = require('./is-relative'),
+    getPackageInfo = require('./get-package-info'),
+    getNearestPackageJSON = require('./get-nearest-package-json'),
+    getFullInfo = require('./get-full-info');
+var factory = (modulePath, caller) => {
     var obj = {
         _caller: caller,
         _modulePath: modulePath,
         _saved: [],
-        getFullInfo: save(getFullInfo),
-        getFullPath: save(obj, getFullPath),
+        _funcs: {
+            fullPath: getFullPath,
+            resolvedPath: getResolvedPath,
+            rootPath: getRootPath,
+            packagePath: getPackagePath,
+            relativePath: getRelativePath,
+            relativeName: getRelativeName,
+            isDependence: isDependence,
+            isSystem: isSystem,
+            isAbsolute: isAbsolute,
+            isRelative: isRelative,
+            packageInfo: getPackageInfo,
+            nearestPackageJSON: getNearestPackageJSON
+        }
+    };
+    for (var key in obj._funcs) {
+        if (key.indexOf("is") === 0) {
+            obj[key] = save.bind(this, obj, key, obj._funcs[key])
+        } else {
+            obj["get" + key.charAt(0).toUpperCase() + key.substr(1)] = save.bind(this, obj, key, obj._funcs[key])
+        }
     }
+    obj.getCallerInfo = save.bind(this, obj, "callerInfo", factory.bind(this, caller, undefined));
+    obj.getFullInfo = save.bind(this, obj, "fullInfo", getFullInfo);
+    return obj;
 }
+module.exports = factory;
