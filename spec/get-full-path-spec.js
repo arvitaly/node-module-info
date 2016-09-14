@@ -9,6 +9,7 @@ describe("Get full path", () => {
             isAbsolute: f("isAbsolute", jasmine.createSpy()),
             isDependence: f("isDependence", jasmine.createSpy()),
             isSystem: f("isSystem", jasmine.createSpy()),
+            getResolvedPath: f("getResolvedPath", jasmine.createSpy()),
             getCallerInfo: f("getCallerInfo", jasmine.createSpy())
         });
     })
@@ -29,24 +30,21 @@ describe("Get full path", () => {
         expect(getFullPath(f("obj"))).toBe(path.resolve(f("relPath")));
     })
     it("when caller setted and path is relative, should get caller full path dirname, concat with modulePath, resolve and return it", () => {
-        f("isAbsolute").and.returnValue(false);
         f("isRelative").and.returnValue(true);
-        f("getCallerInfo").and.returnValue({
-            getFullPath: f("callerGetFullPath", jasmine.createSpy())
-        })
-        f("callerGetFullPath").and.returnValue(f("callerFullPath", "/a/b/c"));
         f("obj")._modulePath = f("relPath", "./../d/e/f");
-        f("obj")._caller = f("callerFullPath");
-        expect(getFullPath(f("obj"))).toBe(path.resolve(path.join(path.dirname(f("callerFullPath")), f("relPath"))));
+        f("obj")._caller = f("caller");
+        f("getResolvedPath").and.returnValue(f("resolvedPath"))
+        expect(getFullPath(f("obj"))).toBe(f("resolvedPath"));
+
     })
     it("when caller setted and is system, should return null", () => {
         f("obj")._caller = f("caller");
         f("isSystem").and.returnValue(true);
         expect(getFullPath(f("obj"))).toBe(null);
     })
-    it("when caller setted and is dependence, should get package path and package info", () => {
+    it("when caller setted and is dependence, should get return resolved path", () => {
         f("obj")._caller = f("caller");
-        f("isSystem").and.returnValue(true);
-        expect(getFullPath(f("obj"))).toBe(null);
-    })    
+        f("getResolvedPath").and.returnValue(f("resolvedPath"))
+        expect(getFullPath(f("obj"))).toBe(f("resolvedPath"));
+    })
 })

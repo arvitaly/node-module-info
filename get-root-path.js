@@ -1,5 +1,4 @@
 var path = require('path');
-var getNormalizedFullPath = require('./get-normalized-full-path');
-module.exports = (modulePath, caller) => {
-    return path.dirname(getNormalizedFullPath(modulePath, caller)).split(path.sep + 'node_modules').shift();
+module.exports = (object) => {
+    return path.dirname(object.getFullPath()).split(path.sep + 'node_modules').shift();
 }

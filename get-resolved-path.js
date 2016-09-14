@@ -1,3 +1,4 @@
+var Module = require('module');
 module.exports = (object) => {
-    return require.resolve(object.getFullPath());
+    Module._resolveFilename(object._modulePath, object._caller, !!object._caller);
 }

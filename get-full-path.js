@@ -1,4 +1,3 @@
-var Module = require('module');
 var path = require('path');
 module.exports = (object) => {
     var realPath;
@@ -6,16 +5,10 @@ module.exports = (object) => {
         realPath = object._modulePath;
     } else {
         if (object._caller) {
-            if (object.isRelative()) {
-                Module._resolveFilename
-                realPath = path.join(path.dirname(object.getCallerInfo().getFullPath()), object._modulePath);
-            }
-            if (object.isDependence()) {
-                realPath = path.join(object.getPackagePath(), object.getRelativeName())
-            }
             if (object.isSystem()) {
                 return null;
             }
+            return object.getResolvedPath();
         } else {
             realPath = path.join(process.cwd(), object._modulePath);
         }
