@@ -31,6 +31,7 @@ Full information about module in NodeJS.
     getPackageInfo: () => { //info from package.json from package path
         name: string;
         version: string;
+        ///...full info
     };
 
 # Tests
