@@ -4,6 +4,20 @@ declare module "node-module-info" {
         version: string;
     }
     interface Info {
+        getFullInfo: () => {
+            fullPath: string,
+            resolvedPath: string,
+            rootPath: string,
+            packagePath: string,
+            relativePath: string,
+            relativeName: string,
+            isDependence: boolean,
+            isSystem: boolean,
+            isAbsolute: boolean,
+            isRelative: boolean,
+            packageInfo: Package,
+            nearestPackageJSON: string
+        },
         getCallerInfo: () => Info;
         getFullPath: () => string;
         getResolvedPath: () => string;

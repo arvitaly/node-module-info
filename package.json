@@ -1,6 +1,6 @@
 {
   "name": "node-module-info",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Full information about module in NodeJS",
   "main": "index.js",
   "scripts": {
