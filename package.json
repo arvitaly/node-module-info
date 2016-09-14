@@ -1,8 +1,9 @@
 {
   "name": "node-module-info",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Full information about module in NodeJS",
   "main": "index.js",
+  "typings": "./typings.d.ts",
   "scripts": {
     "test": "istanbul cover node_modules/jasmine/bin/jasmine.js",
     "watch:test": "nodemon --exec \"jasmine\"",
