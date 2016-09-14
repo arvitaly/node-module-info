@@ -6,11 +6,9 @@ module.exports = (object) => {
         splittedPath.pop();
         try {
             packagePath = path.join(splittedPath.join(path.sep), "package.json");
-            console.log(packagePath)
             require.resolve(packagePath);
             break;
         } catch (e) {
-            console.log(e)
             packagePath = null;
         }
         i++;
