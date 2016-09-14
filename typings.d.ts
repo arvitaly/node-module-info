@@ -13,6 +13,7 @@ declare module "node-module-info" {
                 packagePath: string,
                 relativePath: string,
                 relativeName: string,
+                defineName: string,
                 isDependence: boolean,
                 isSystem: boolean,
                 isAbsolute: boolean,
@@ -27,6 +28,7 @@ declare module "node-module-info" {
             getPackagePath: () => string;
             getRelativePath: () => string;
             getRelativeName: () => string;
+            getDefineName: () => string;
             isAbsoulte: () => boolean;
             isDependence: () => boolean;
             isRelative: () => boolean;
