@@ -1,7 +1,3 @@
 module.exports = (object) => {
-    try {
-        return require.resolve(object.getFullPath());
-    } catch (e) {
-        return null;
-    }
+    return require.resolve(object.getFullPath());
 }
