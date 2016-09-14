@@ -31,4 +31,6 @@ declare module "node-module-info" {
         isSystem: () => boolean;
         getPackageInfo: () => Package;
     }
+    function getInfo(modulePath: string, caller?: string): Info;
+    export = getInfo;
 }
