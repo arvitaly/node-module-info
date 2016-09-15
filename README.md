@@ -24,6 +24,7 @@ Full information about module in NodeJS.
     getPackagePath: () => string; //package path for current module
     getRelativePath: () => string; //relative path from package path
     getRelativeName: () => string; //relative path without extension
+    getDefineName: ()=>string;//name for use with builders, `npm!package@version#path`
     isAbsoulte: () => boolean; //is module path absolute
     isDependence: () => boolean; //is dependence of caller (if caller setted) or false
     isRelative: () => boolean; //is starts with "." if caller setted, or if not absolute
@@ -33,6 +34,43 @@ Full information about module in NodeJS.
         version: string;
         ///...full info
     };
+
+# Typings
+
+    export interface Info {
+        getFullInfo: () => {
+            fullPath: string,
+            resolvedPath: string,
+            rootPath: string,
+            packagePath: string,
+            relativePath: string,
+            relativeName: string,
+            defineName: string,
+            isDependence: boolean,
+            isSystem: boolean,
+            isAbsolute: boolean,
+            isRelative: boolean,
+            packageInfo: Package,
+            nearestPackageJSON: string
+        },
+        getCallerInfo: () => Info;
+        getFullPath: () => string;
+        getResolvedPath: () => string;
+        getRootPath: () => string;
+        getPackagePath: () => string;
+        getRelativePath: () => string;
+        getRelativeName: () => string;
+        getDefineName: () => string;
+        isAbsoulte: () => boolean;
+        isDependence: () => boolean;
+        isRelative: () => boolean;
+        isSystem: () => boolean;
+        getPackageInfo: () => Package;
+    }
+    export interface Package {
+        name: string;
+        version: string;
+    }
 
 # Tests
 
