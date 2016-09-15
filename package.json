@@ -1,6 +1,6 @@
 {
   "name": "node-module-info",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Full information about module in NodeJS",
   "main": "index.js",
   "typings": "typings.d.ts",
@@ -25,6 +25,6 @@
     "fixture2": "0.0.3",
     "istanbul": "^0.4.5",
     "jasmine": "2.4.1",
-    "mock2": "0.0.11"
+    "mock2": "0.0.12"
   }
 }
