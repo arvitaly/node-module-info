@@ -7,6 +7,7 @@ declare namespace NodeModuleInfo {
             packagePath: string,
             relativePath: string,
             relativeName: string,
+            defineName: string,
             isDependence: boolean,
             isSystem: boolean,
             isAbsolute: boolean,
@@ -21,6 +22,7 @@ declare namespace NodeModuleInfo {
         getPackagePath: () => string;
         getRelativePath: () => string;
         getRelativeName: () => string;
+        getDefineName: () => string;
         isAbsoulte: () => boolean;
         isDependence: () => boolean;
         isRelative: () => boolean;
