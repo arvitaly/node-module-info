@@ -1,4 +1,6 @@
 # node-module-info [![npm version](https://badge.fury.io/js/node-module-info.svg)](https://badge.fury.io/js/node-module-info)[![Build Status](https://travis-ci.org/arvitaly/node-module-info.svg?branch=master)](https://travis-ci.org/arvitaly/node-module-info)[![Coverage Status](https://coveralls.io/repos/github/arvitaly/node-module-info/badge.svg?branch=master)](https://coveralls.io/github/arvitaly/node-module-info?branch=master)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/arvitaly/node-module-info.svg)](https://greenkeeper.io/)
 Full information about module in NodeJS.
 
 # Install
